@@ -16,5 +16,15 @@ public class Cliente extends Persona{
     @JoinColumn(name = "usuario_id", unique = true)
     @OneToOne(cascade = CascadeType.ALL)
     private Usuario usuario;
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+    
+    
     
 }

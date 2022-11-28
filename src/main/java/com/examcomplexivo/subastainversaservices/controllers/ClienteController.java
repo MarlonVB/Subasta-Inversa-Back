@@ -22,17 +22,17 @@ public class ClienteController {
     @Autowired
     private ClienteService service;
 
-    @GetMapping("listar")
+    @GetMapping("/listar")
     public List<Cliente> listar() {
         return service.listar();
     }
 
-    @GetMapping("listar/{filtro}")
+    @GetMapping("/listar_filtro/{filtro}")
     public List<Cliente> listarFiltro(@PathVariable(name = "filtro", required = true) String filtro) {
         return service.findByFiltros(filtro);
     }
 
-    @PostMapping("crear")
+    @PostMapping("/crear")
     public ResponseEntity<?> crear(@Valid @RequestBody Cliente cliente, BindingResult result) {
 
         if (result.hasErrors()) {

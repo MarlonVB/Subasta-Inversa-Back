@@ -23,17 +23,17 @@ public class ServicioController {
     @Autowired
     private ServicioService service;
 
-    @GetMapping("listar")
+    @GetMapping("/listar")
     public List<Servicio> listar() {
         return service.listar();
     }
 
-    @GetMapping("listar/{filtro}")
+    @GetMapping("/listar_filtro/{filtro}")
     public List<Servicio> listarByFiltro(@PathVariable(name = "filtro", required = true) String filtro) {
         return service.findByFiltro(filtro);
     }
 
-    @PostMapping("crear")
+    @PostMapping("/crear")
     public ResponseEntity<?> crear(@Valid @RequestBody Servicio servicio, BindingResult result) {
 
         if (result.hasErrors()) {

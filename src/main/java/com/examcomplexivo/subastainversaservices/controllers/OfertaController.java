@@ -20,12 +20,12 @@ public class OfertaController {
     @Autowired
     private OfertaService ofertaService;
 
-    @GetMapping("listar")
+    @GetMapping("/listar")
     public List<Oferta> listar(){
         return ofertaService.listar();
     }
 
-    @PostMapping("crear")
+    @PostMapping("/crear")
     public ResponseEntity<?> crear(@Valid @RequestBody Oferta oferta, BindingResult result){
 
 //        Optional<Oferta> ofertaBD = ofertaService.findById(oferta.getIdOferta());
@@ -70,7 +70,7 @@ public class OfertaController {
         }
     }
 
-    @GetMapping("listar/{id}")
+    @GetMapping("/listar_id/{id}")
     public ResponseEntity<?> listarId(@PathVariable Long id){
         Optional<Oferta> ofertaOptional=ofertaService.findById(id);
         if (ofertaOptional.isPresent()) {
@@ -82,7 +82,7 @@ public class OfertaController {
         );
     }
 
-    @GetMapping("listar/{fecha}") //Buscar por fecha
+    @GetMapping("/listar_fecha/{fecha}") //Buscar por fecha
     public ResponseEntity<?> listarFecha(@PathVariable Date fecha){
         Optional<Oferta> ofertaOptional=ofertaService.findByFecha(fecha);
         if (ofertaOptional.isPresent()) {
@@ -94,7 +94,7 @@ public class OfertaController {
         );
     }
 
-    @GetMapping("listar/{estado}")
+    @GetMapping("/listar_estado/{estado}")
     public ResponseEntity<?> listarEstado(@PathVariable Boolean estado){
         Optional<Oferta> ofertaOptional=ofertaService.findByEstado(estado);
         if (ofertaOptional.isPresent()) {

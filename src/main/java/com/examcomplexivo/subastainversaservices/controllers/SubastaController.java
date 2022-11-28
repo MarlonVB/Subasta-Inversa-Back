@@ -26,23 +26,23 @@ public class SubastaController {
     @Autowired
     private SubastaService subastaService;
 
-    @GetMapping("listar")
+    @GetMapping("/listar/todo")
     public List<Subasta> listar() {
         return subastaService.listar();
     }
 
-    @GetMapping("listar/{fechaInicio}/{fechaFin}")
+    @GetMapping("/listar_fechas/{fechaInicio}/{fechaFin}")
     public List<Subasta> listarByFechas(@PathVariable(name = "fechaInicio", required = true) java.sql.Date fechaInicio,
                                 @PathVariable(name = "fechaFin", required = true) java.sql.Date fechaFin) {
         return subastaService.findByFechas(fechaInicio, fechaFin);
     }
 
-    @GetMapping("listar/{filtro}")
+    @GetMapping("/listar_filtro/{filtro}")
     public List<Subasta> listarByFiltros(@PathVariable(name = "filtro", required = true) String filtro) {
         return subastaService.findByFiltro(filtro);
     }
 
-    @PostMapping("crear")
+    @PostMapping("/crear")
     public ResponseEntity<?> crear(@Valid @RequestBody Subasta subasta, BindingResult result) {
         if (result.hasErrors()) {
             return validar(result);

@@ -28,7 +28,7 @@ public class PersonaController {
         return service.listar();
     }
 
-    @PostMapping
+    @PostMapping("/crear")
     public ResponseEntity<?> crear(@Valid @RequestBody Persona persona, BindingResult result) {
         if (result.hasErrors()) {
             return validar(result);

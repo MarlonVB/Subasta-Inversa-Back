@@ -22,12 +22,12 @@ public class UsuarioController {
     @Autowired
     private UsuarioService service;
 
-    @GetMapping("listar")
+    @GetMapping("/listar")
     public List<Usuario> listar() {
         return service.listar();
     }
 
-    @PostMapping("crear")
+    @PostMapping("/crear")
     public ResponseEntity<?> crear(@Valid @RequestBody Usuario usuario, BindingResult result) {
 
         if (result.hasErrors()) {
@@ -106,4 +106,9 @@ public class UsuarioController {
         });
         return ResponseEntity.badRequest().body(errores);
     }
+    
+    @PostMapping("/getUser")
+   	public Usuario getUser(@RequestBody Usuario user) {
+        	return service.getUser(user);
+    	}
 }

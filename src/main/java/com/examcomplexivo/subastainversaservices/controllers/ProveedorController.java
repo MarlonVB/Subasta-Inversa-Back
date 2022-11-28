@@ -23,20 +23,20 @@ public class ProveedorController {
     @Autowired
     private ProveedorService proveedorService;
 
-    @GetMapping("listar")
+    @GetMapping("/listar")
     public List<Proveedor> listar(){
         return proveedorService.listar();
     }
 
-    @GetMapping("listar/{filtro}")
+    @GetMapping("/listar_filtro/{filtro}")
     public List<Proveedor> listarByFiltro(@PathVariable(name = "filtro", required = true) String filtro){
         return proveedorService.findByFiltros(filtro);
     }
-    @GetMapping("listar/servicio/{servicio}")
+    @GetMapping("/listar_servicio/{servicio}")
     public List<Proveedor> listarByServicio(@PathVariable(name = "servicio", required = true) String servicio){
         return proveedorService.findByServicio(servicio.toLowerCase());
     }
-    @PostMapping("crear")
+    @PostMapping("/crear")
     public ResponseEntity<?> crear(@Valid @RequestBody Proveedor proveedor, BindingResult result) {
         if (result.hasErrors()) {
             return validar(result);

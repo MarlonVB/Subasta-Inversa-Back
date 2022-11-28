@@ -26,4 +26,31 @@ public class Proveedor extends Persona {
     inverseJoinColumns = @JoinColumn(name = "id_servicio"))
     private List<Servicio> servicios = new ArrayList<>();
 
+	public String getAnios_experiencia() {
+		return anios_experiencia;
+	}
+
+	public void setAnios_experiencia(String anios_experiencia) {
+		this.anios_experiencia = anios_experiencia;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public List<Servicio> getServicios() {
+		return servicios;
+	}
+
+	public void setServicios(List<Servicio> servicios) {
+		this.servicios = servicios;
+	}
+    
+    
+    
+
 }
